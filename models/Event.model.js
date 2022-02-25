@@ -33,6 +33,6 @@ const eventSchema = new Schema ({
 
 });
 
-const EventModel = model ("EvenModel", eventSchema);
+const EventModel = model ("EventModel", eventSchema);
 
 module.exports = EventModel;

@@ -16,10 +16,14 @@ const userSchema = new Schema(
         enum: ["user", "admin"],
         default: "user" //verificar más adelante con el checkbox
   },
-       // this second object adds extra properties: `createdAt` and `updatedAt`
-    timestamps: true,
+    
 
-}
+},
+{
+     // this second object adds extra properties: `createdAt` and `updatedAt`
+     timestamps: true,
+} 
+
 );
 
 const UserModel = model("UserModel", userSchema);

@@ -1,0 +1,20 @@
+<h1>Ventana de Login</h1>
+{{!-- views/auth/signup.hbs --}}
+ 
+<div id="form">
+  <h2>Login</h2>
+  <form action="/auth/login" method="POST">
+ 
+    <label> Email
+      <input type="email" name="email" placeholder="...email" />
+    </label>
+ 
+    <label> Password
+      <input type="password" name="password" placeholder="...password" />
+    </label>
+ 
+    <button type="submit">Create account</button>
+ 
+    {{!-- error message will be added here --}}
+  </form>
+</div>

@@ -1,0 +1,32 @@
+<div id="form">
+  <h2>Signup</h2>
+  <form action="/auth/signup" method="POST">
+ 
+    <label> Name
+      <input type="text" name="name" placeholder="...name" />
+    </label>
+ 
+    <label> Email
+      <input type="email" name="email" placeholder="...email" />
+    </label>
+
+     
+    <label> Password
+      <input type="password" name="password" placeholder="...password" />
+      <label for="password">Debe contener al menos una letra miniscula o mayuscula y un numero</label>
+    </label>
+ 
+    {{!--  AQUI PONER EL CHECKBOX DE USER/ADMIN --}}
+    <input type="radio" name="role" value="user">
+        <label for="user">Eventero</label><br>
+        <input type="radio" name="role" value="admin">
+    <label for="admin">Organizador</label><br>
+
+    <button type="submit">Create account</button>
+ 
+    {{!-- error message will be added here --}}
+    {{#if errorMessage}}
+        <p>{{errorMessage}}</p>
+    {{/if}}
+  </form>
+</div>
