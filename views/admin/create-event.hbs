@@ -1,0 +1,43 @@
+<h1>Esta es la pagina de crear eventos</h1>
+
+<div id="form">
+  <h2>Crear Evento</h2>
+  <form action="/create" method="POST">
+ 
+    <label for="title"> Titulo
+      <input type="text" name="title" placeholder="...nombre del evento" />
+    </label>
+ 
+    <label for="location"> Location
+      <input type="text" name="location" placeholder="...location" />
+    </label>
+
+    <label for="date">Date
+        <input type="date" name="date" {{!-- value="2018-07-22" --}} min="2022-01-01" max="2030-12-31">
+    </label>
+
+    <label for="time"> Time
+      <input min="06:00" max="00:00" type="time" name="time"/>
+    </label>
+
+    <label for="description"> Description
+      <input type="text" name="description" placeholder="...description" />
+    </label>
+
+{{!--     <label for="creadoPor">Creado Por:
+        <select name="creadoPor">
+            {{#each admin}}
+                <option value="{{this._id}}">{{this.name}}</option>
+            {{/each}}
+        </select> --}}
+
+    </label>
+
+    {{!-- Pensar el como poner la imagen --}}
+
+ 
+    <button type="submit">Crear Evento</button>
+ 
+    {{!-- error message will be added here --}}
+  </form>
+</div>
