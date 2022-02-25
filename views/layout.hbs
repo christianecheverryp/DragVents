@@ -12,8 +12,16 @@
    <body>
       <nav>
          <a href="/">Home</a>
-         <a href="/auth/signup">SignUp</a>
+         <a href="/events">Eventos</a>
+
+         {{#if isLoggedIn}}
+         <a href="/auth/logout">LogOut</a>
+         {{else}} 
          <a href="/auth/login">LogIn</a>
+         <a href="/auth/signup">SignUp</a>
+         {{/if}}
+        
+
       </nav>
 
       {{{body}}}
