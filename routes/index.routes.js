@@ -7,7 +7,7 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-// router.use("/auth", authRoutes)
+ router.use("/auth", authRoutes)
 
 
 
