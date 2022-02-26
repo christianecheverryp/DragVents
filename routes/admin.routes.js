@@ -3,7 +3,9 @@ const async = require("hbs/lib/async");
 const EventModel = require("../models/Event.model");
 const UserModel = require("../models/User.model")
 
-router.get("/create", (req, res, next) => {
+const isAdmin = require ("../middlewares/isAdmin")
+
+router.get("/create", isAdmin, (req, res, next) => {
     res.render("admin/create-event.hbs")
 /*     UserModel.find()
     .then((admin) => {
@@ -35,7 +37,7 @@ router.post("/create", (req, res, next) => {
     })
 })
 
-router.post("/:id/delete",async (req, res, next) => {
+router.post("/:id/delete", isAdmin, async (req, res, next) => {
     try{
         const {id} = req.params
 
@@ -48,7 +50,7 @@ router.post("/:id/delete",async (req, res, next) => {
     }
 })  
 
-router.get ("/:id/edit", async (req,res,next) => {
+router.get ("/:id/edit", isAdmin, async (req,res,next) => {
     try {
 
         const {id} = req.params

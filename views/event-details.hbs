@@ -8,13 +8,15 @@
     {{#each oneEvent.creadoPor}}
         <p>Creado Por: {{this.name}}</p>
     {{/each}}
-    <form action="/{{oneEvent._id}}/delete" method="POST">
+
+    {{#if adminLocal}}
+    <form id="botondelete" action="/{{oneEvent._id}}/delete" method="POST">
         <button>Delete</button>
     </form>
     
-    <form action="/{{oneEvent._id}}/edit">
-        <button>Edit</button>
-    </form>
+   <a href="/{{oneEvent._id}}/edit">Edit</a>
+
+   {{/if}}
     
   </div>
   <div class="img">
