@@ -1,17 +1,18 @@
 const router = require("express").Router();
+const async = require("hbs/lib/async");
 const EventModel = require("../models/Event.model");
 const UserModel = require("../models/User.model")
 
 router.get("/create", (req, res, next) => {
-
-    UserModel.find()
+    res.render("admin/create-event.hbs")
+/*     UserModel.find()
     .then((admin) => {
-        res.render("admin/create-event.hbs", {admin})
+        
     })
     .catch((err) => {
         next(err)
     })
-    
+     */
 })
 
 router.post("/create", (req, res, next) => {
@@ -23,7 +24,7 @@ router.post("/create", (req, res, next) => {
         time,
         description,
         img,
-        creadoPor
+        creadoPor: req.session.user // aqui sabemos que usuario esta conectado
     })
     .then((eachEvent) => {
         res.redirect("/events")
@@ -34,7 +35,18 @@ router.post("/create", (req, res, next) => {
     })
 })
 
+router.post("/:id/delete",async (req, res, next) => {
+    try{
+        const {id} = req.params
 
+        await EventModel.findByIdAndDelete(id)
+        res.redirect("/events")
+
+    }
+    catch(err){
+        next(err)
+    }
+})  
 
 
 module.exports = router;

@@ -61,7 +61,7 @@ req.session.user = newUser;
 req.app.locals.isLoggedIn = true 
 
 if (newUser.role === "admin") {
-    req.app.locals.admin = true 
+    req.app.locals.adminLocal = true 
 } 
 
 res.redirect("/events")
@@ -119,7 +119,7 @@ router.post("/login", async (req, res, next) => {
         req.app.locals.isLoggedIn = true
 
         if (req.session.user.role === "admin") {
-            req.app.locals.admin = true 
+            req.app.locals.adminLocal = true 
             console.log("ok")
         }
 
@@ -148,7 +148,7 @@ router.get ("/logout", (req, res, next) => {
     req.session.destroy();
     res.redirect("/")
     req.app.locals.isLoggedIn = false
-    req.app.locals.admin = false 
+    req.app.locals.adminLocal = false 
 })
 
 

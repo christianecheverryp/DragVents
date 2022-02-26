@@ -1,4 +1,29 @@
 <h1>LOS EVENTOS</h1>
-{{#if admin}}
+{{!-- {{#if admin}}
 <p>andaaaaaa</p>
 {{/if}}
+ --}}
+
+
+
+<div class="contenedor">
+
+{{#each allEvents}}
+	<a href="/{{this._id}}/details">
+	  	<div class="contenedor-cards">            
+		    <div class="contenedor-card-item">
+		      	<div class="contenedor-card-item-wrapper">
+		        	<img src="https://images.unsplash.com/photo-1448932223592-d1fc686e76ea" alt="">
+		        	<div class="contenedor-info">
+		          		<div class="info">
+		            		<p class="titulo">{{this.title}}</p>
+		            		<span class="categoria">{{this.location}}</span>
+		          		</div>
+		          		<div class="fondo"></div>
+		        	</div>
+		      	</div>
+		    </div>
+          
+    </a>
+{{/each}}
+</div>
