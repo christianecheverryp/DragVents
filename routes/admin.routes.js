@@ -48,5 +48,31 @@ router.post("/:id/delete",async (req, res, next) => {
     }
 })  
 
+router.get ("/:id/edit", async (req,res,next) => {
+    try {
+
+        const {id} = req.params
+
+        const oneEvent = await EventModel.findById(id)
+
+        res.render("admin/edit-event.hbs", {oneEvent})
+    }
+    catch (err) {
+        next(err)
+    }
+})
+
+router.post ("/:id/edit", (req, res, next) => {
+    const {id} =req.params
+    const {title, description, location, date, time, img} = req.body
+
+    EventModel.findByIdAndUpdate(id, {title, description, location, date, time, img })
+    .then ((updatedEvent) => {
+
+        res.redirect(`/${updatedEvent._id}/details`)
+
+    })
+})
+
 
 module.exports = router;

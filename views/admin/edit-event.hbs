@@ -1,0 +1,35 @@
+<h1>Esta es la pagina para editar eventos</h1>
+
+<div id="form">
+  <h2>Editar Evento</h2>
+  <form action="/{{oneEvent._id}}/edit" method="POST">
+ 
+    <label for="title"> Titulo
+      <input type="text" name="title" value="{{oneEvent.title}}" />
+    </label>
+ 
+    <label for="location"> Location
+      <input type="text" name="location" value="{{oneEvent.location}}" />
+    </label>
+
+    <label for="date">Date
+        <input type="date" name="date" value="{{oneEvent.date}}" min="2022-01-01" max="2030-12-31">
+    </label>
+
+    <label for="time"> Time
+      <input min="06:00" max="00:00" type="time" name="time" value="{{oneEvent.time}}"/>
+    </label>
+
+    <label for="description"> Description
+      <input type="text" name="description" value="{{oneEvent.description}}" />
+    </label>
+
+
+    {{!-- Pensar el como poner la imagen --}}
+
+ 
+    <button type="submit">Editar Evento</button>
+ 
+    {{!-- error message will be added here --}}
+  </form>
+</div>
