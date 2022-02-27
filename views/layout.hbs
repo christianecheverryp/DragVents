@@ -1,16 +1,16 @@
-<!DOCTYPE html>
 <html lang="en">
 
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>{{appTitle}}</title>
-      <link rel="stylesheet" href="/stylesheets/style.css" />
-   </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{appTitle}}</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
 
-   <body>
-      <nav>
+  <body>
+
+    {{!--       <nav>
          <a href="/">Home</a>
          <a href="/events">Eventos</a>
 
@@ -26,11 +26,43 @@
          {{/if}}
         
 
-      </nav>
+      </nav> --}}
 
-      {{{body}}}
+    <!-- Navbar -->
+    <nav>
+       <ul>
+         <li>
+         <a href="/">HOME {{! <span class="sr-only">(current)</span> }}</a>
+         </li>
+         <li>
+         <a href="/events">EVENTS</a>
+         </li>
 
-      <script src="/js/script.js"></script>
-   </body>
+         {{#if isLoggedIn}}
+         <li>
+            <a href="/auth/logout">LOG OUT</a>
+         </li>
+         {{else}}
+         <li>
+            <a href="/auth/login">LOG IN</a>
+         </li>
+         <li>
+            <a href="/auth/signup">SIGN UP</a>
+         </li>
+         {{/if}}
+         {{#if adminLocal}}
+         <li>
+            <a href="/create">CREATE</a>
+         </li>
+         {{/if}}
+      </ul>
+    </nav>
+    <!-- end of navbar -->
+    <!-- end of navbar -->
+
+    {{{body}}}
+
+    <script src="/js/script.js"></script>
+  </body>
 
 </html>
