@@ -7,18 +7,13 @@ const isAdmin = require ("../middlewares/isAdmin")
 
 router.get("/create", isAdmin, (req, res, next) => {
     res.render("admin/create-event.hbs")
-/*     UserModel.find()
-    .then((admin) => {
-        
-    })
-    .catch((err) => {
-        next(err)
-    })
-     */
+
 })
 
 router.post("/create", (req, res, next) => {
-    const { title, location, date, time, description, img, creadoPor } = req.body
+    let { title, location, date, time, description, img, creadoPor } = req.body
+    location = location.toUpperCase()
+
     EventModel.create({
         title,
         location,

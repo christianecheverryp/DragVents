@@ -7,10 +7,13 @@ const variasRoutes = require ("./varias.routes");
 const adminRoutes = require("./admin.routes");
 
 
+
+
 /* GET home page */
 router.get("/", (req, res, next) => {
+ 
   res.render("index");
-});
+})
 
 router.use("/auth", authRoutes)
 

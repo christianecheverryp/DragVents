@@ -6,10 +6,10 @@ const eventSchema = new Schema ({
         type: String,
         required: true
     },
-    creadoPor: [{
+    creadoPor: {
         type: Schema.Types.ObjectId,
         ref: "UserModel"
-    }],
+    },
     location: {
         type: String, 
         required: true 

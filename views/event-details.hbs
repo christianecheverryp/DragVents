@@ -2,14 +2,18 @@
   <h1>{{oneEvent.title}}</h1>
   <div class="content">
     <p>{{oneEvent.description}}</p>
-    <p>{{oneEvent.Location}}</p>
-    <p>{{oneEvent.date}}</p>
+    <p>{{oneEvent.location}}</p>
+    <p>{{oneEvent.date}}</p> 
     <p>{{oneEvent.time}}</p> 
-    {{#each oneEvent.creadoPor}}
+    {{!-- {{#each oneEvent.creadoPor}}
         <p>Creado Por: {{this.name}}</p>
-    {{/each}}
+    {{/each}} --}}
+    <p>{{oneEvent.creadoPor.name}}</p>
 
-    {{#if adminLocal}}
+
+    {{!-- {{#if adminLocal._id === oneEvent.creadoPor._id }} --}}
+    {{#if isOwner}}
+
     <form id="botondelete" action="/{{oneEvent._id}}/delete" method="POST">
         <button>Delete</button>
     </form>
