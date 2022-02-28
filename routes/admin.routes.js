@@ -3,6 +3,8 @@ const async = require("hbs/lib/async");
 const EventModel = require("../models/Event.model");
 const UserModel = require("../models/User.model")
 
+const fileUploader = require("../middlewares/uploader")
+
 const isAdmin = require ("../middlewares/isAdmin")
 
 router.get("/create", isAdmin, (req, res, next) => {
@@ -10,7 +12,7 @@ router.get("/create", isAdmin, (req, res, next) => {
 
 })
 
-router.post("/create", (req, res, next) => {
+router.post("/create", fileUploader.single("img"), (req, res, next) => {
     let { title, location, date, time, description, img, creadoPor } = req.body
     location = location.toUpperCase()
 
@@ -20,9 +22,10 @@ router.post("/create", (req, res, next) => {
         date,
         time,
         description,
-        img,
+        img: req.file.path,
         creadoPor: req.session.user // aqui sabemos que usuario esta conectado
     })
+    //console.log(req.file)
     .then((eachEvent) => {
         res.redirect("/events")
         console.log(eachEvent)

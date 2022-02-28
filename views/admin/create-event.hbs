@@ -2,7 +2,7 @@
 
 <div id="form">
   <h2>Crear Evento</h2>
-  <form action="/create" method="POST">
+  <form action="/create" method="POST" enctype="multipart/form-data">
  
     <label for="title"> Titulo
       <input type="text" name="title" placeholder="...nombre del evento" />
@@ -26,6 +26,10 @@
 
 
     {{!-- Pensar el como poner la imagen --}}
+
+    <label for="img"> Imagen 
+      <input type="file" name="img">
+    </label>
 
  
     <button type="submit">Crear Evento</button>
