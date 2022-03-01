@@ -1,6 +1,13 @@
  body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  background: #BE93C5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7BC6CC, #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+
+
 }
 
 a {
@@ -423,5 +430,123 @@ img {
 }
 .user-info small {
   color: #545d7a;
+}
+
+/*¿*********** FORMULARIO SIGN IN *****************/
+
+
+:root {
+  --colorTextos: #49454567;
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#form_signIn {
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+h1 {
+  text-align: center;
+  font-weight: 700px;
+}
+
+#form_contenedor{
+  background-color: white;
+  padding: 40px 0;
+  box-shadow: 0 0 6px rgb(255, 255, 255, 0.8);
+  border-radius: 10px;
+  
+}
+
+.form {
+  width: 100%;
+  margin: auto;
+}
+
+#form_contenedor .grupo{
+  position: relative;
+  margin: 45px;
+}
+
+#name_Input, #email_Input, #password_Input {
+  background: none;
+  color: #c6c6c6;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--colorTextos);
+}
+
+#name_Input, #email_Input, #password_Input:focus {
+  outline: none; /* para que cuando pinche, no aparezca el recuadro */
+  color: #5e5d5d; /* color de la letra al escribir */
+}
+
+.label_signIn {
+  color: var(--colorTextos);
+  font-size: 16px;
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  transition: 0.5s ease-in-out all;
+  pointer-events: none;
+}
+
+/* subo el nombre cuando pincho en el input */
+#name_Input:focus~.label_signIn, #email_Input:focus~.label_signIn, #password_Input:focus~.label_signIn 
+/* #name_Input:valid~.label_signIn, #email_Input:valid~.label_signIn, #password_Input:valid~.label_signIn */ {
+  top: -14px;
+  font-size: 12px;
+  color: #2196f3;
+}
+.barra {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.barra::before {
+  content: "";
+  height: 2px;
+  width: 0%;
+  bottom: 0;
+  position: absolute;
+  background: linear-gradient(to right, #7BC6CC, #BE93C5);
+  transition: 0.3s ease width;
+  left: 0;
+
+}
+
+#password_Input:focus~.barra::before {
+  width: 100%;
+
+
+}
+
+#btn-createAccount {
+  font-family: 'roboto';
+  background: #BE93C5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7BC6CC, #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border: none;
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  color: white;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
 }
 

@@ -1,32 +1,55 @@
-<div id="form">
-  <h2>Signup</h2>
-  <form action="/auth/signup" method="POST">
- 
-    <label> Name
-      <input type="text" name="name" placeholder="...name" />
-    </label>
- 
-    <label> Email
-      <input type="email" name="email" placeholder="...email" />
-    </label>
+<div id="form_signIn">
 
-     
-    <label> Password
-      <input type="password" name="password" placeholder="...password" />
-      <label for="password">Debe contener al menos una letra miniscula o mayuscula y un numero</label>
-    </label>
- 
-    {{!--  AQUI PONER EL CHECKBOX DE USER/ADMIN --}}
-    <input type="radio" name="role" value="user">
-        <label for="user">Eventero</label><br>
+
+<form action="/auth/signup" method="POST" id="form_Contenedor">
+  
+  <div class="form">
+
+    <h2>Signup</h2>
+
+  
+      <div class="grupo">
+        <input id="name_Input" type="text" name="name"/><span class="barra"></span>
+        <label class="label_signIn"> Name</label>
+      </div>
+    
+
+      <div class="grupo">
+        <input id="email_Input" type="email" name="email"/><span class="barra"></span>
+        <label class="label_signIn"> Email</label>
+      </div>  
+        
+      <div class="grupo">
+          <input id="password_Input" type="password" name="password"/>
+          <label class="label_signIn" for="password"></label><span class="barra"></span>
+          <label class="label_signIn"> Password</label>
+          {{!-- <small>Debe contener al menos una letra miniscula o mayuscula y un numero</small> --}}
+      </div>
+        
+        
+         
+      <div class="grupo">
+        {{!--  AQUI PONER EL CHECKBOX DE USER/ADMIN --}}
+            <input type="radio" name="role" value="user">
+            <label class="label_signIn" for="user">Eventero</label><br>
+      </div>
+
+      <div class="grupo">
         <input type="radio" name="role" value="admin">
-    <label for="admin">Organizador</label><br>
+        <label class="label_signIn" for="admin">Organizador</label><br>
+      </div>
+        
 
-    <button type="submit">Create account</button>
- 
-    {{!-- error message will be added here --}}
-    {{#if errorMessage}}
-        <p>{{errorMessage}}</p>
-    {{/if}}
-  </form>
+      <button id="btn-createAccount" type="submit">Create account</button>
+    
+        {{!-- error message will be added here --}}
+        {{#if errorMessage}}
+            <p>{{errorMessage}}</p>
+        {{/if}}
+
+      
+ </div>
+</form>
+
+
 </div>
