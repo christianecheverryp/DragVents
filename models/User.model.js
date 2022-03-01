@@ -20,9 +20,15 @@ const userSchema = new Schema(
         type: String,
         enum: ["user", "admin"],
         default: "user" //verificar más adelante con el checkbox
-  },
-    
+    },
 
+    description: {
+      type: String,
+    
+    },
+    imgProfile: {
+      type: String
+    },
 },
 {
      // this second object adds extra properties: `createdAt` and `updatedAt`

@@ -29,7 +29,7 @@ const eventSchema = new Schema ({
     img: {
         type: String
         //averiguar si podemos poner una imagen por default
-    }
+    }, 
 
 });
 
