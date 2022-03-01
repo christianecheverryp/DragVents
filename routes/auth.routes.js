@@ -10,8 +10,7 @@ router.get("/signup",  (req, res, next) => {
 })
 
 router.post("/signup", async (req, res, next) => {
-const { name, email, password, role } = req.body // todo. Tenemos la duda del role, en algun momento se utilizara, pero no sabemos cuando
-console.log(req.body)
+const { name, email, password, role, description, imgProfile } = req.body // todo. Tenemos la duda del role, en algun momento se utilizara, pero no sabemos cuando
 // Revisar que todos los campos esten llenos
 if (!name || !email || !password || !role) {
     res.render('auth/signup', { errorMessage: 'Debes introducir todos los campos' });
@@ -52,8 +51,11 @@ const newUser = await UserModel.create({
     name, 
     email,
     password: hashPassword,
-    role
+    role,
+    description,
+    imgProfile
 })
+console.log("pasoooo", newUser)
 
 req.session.user = newUser;
 
@@ -113,14 +115,14 @@ router.post("/login", async (req, res, next) => {
         //USUARIO CHECKED 
 
         req.session.user = foundUser;
-        console.log(req.session.user)
+        //console.log(req.session.user)
         
        //VARIABLE LOCAL
         req.app.locals.isLoggedIn = true
 
         if (req.session.user.role === "admin") {
             req.app.locals.adminLocal = true 
-            console.log("ok")
+            //console.log("ok")
         }
 
 

@@ -28,7 +28,7 @@ router.post("/create", fileUploader.single("img"), (req, res, next) => {
     //console.log(req.file)
     .then((eachEvent) => {
         res.redirect("/events")
-        console.log(eachEvent)
+        
     })
     .catch((err) => {
         next(err)

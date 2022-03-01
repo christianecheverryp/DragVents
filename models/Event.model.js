@@ -30,6 +30,12 @@ const eventSchema = new Schema ({
         type: String
         //averiguar si podemos poner una imagen por default
     }, 
+    joinUsers: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "UserModel"
+        }
+    ]
 
 });
 

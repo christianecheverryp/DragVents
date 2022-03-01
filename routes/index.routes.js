@@ -6,6 +6,8 @@ const variasRoutes = require ("./varias.routes");
 
 const adminRoutes = require("./admin.routes");
 
+const dragRoutes = require("./drag.routes");
+
 
 
 
@@ -21,6 +23,8 @@ router.use("/auth", authRoutes)
 router.use("/", variasRoutes)
 
 router.use("/", adminRoutes)
+
+router.use("/", dragRoutes)
 
 
 module.exports = router;

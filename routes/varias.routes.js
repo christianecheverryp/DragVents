@@ -19,12 +19,19 @@ router.get ("/events",  (req, res, next) => {
 
 router.get("/:id/details", (req, res, next) => {
     const { id } = req.params
-  
+    
 
     EventModel.findById(id)
     .populate("creadoPor")
     .then((oneEvent) => {
-        const isOwner = (req.session.user._id == oneEvent.creadoPor._id)
+        console.log("pasamos por aqui", oneEvent)
+        //let isOwner;
+        //if (req.session.user) {
+        //    isOwner = (req.session.user._id == oneEvent.creadoPor._id)
+        //}
+        const isOwner = (req.session.user?._id == oneEvent.creadoPor._id)
+        // OPTIONAL CHAINING OPERATOR. super avanzado.
+        
 
         res.render("event-details.hbs", {oneEvent, isOwner})
     })
@@ -38,10 +45,11 @@ router.get ("/search", (req, res, next) => {
 
 
     req.query.location = req.query.location.toUpperCase()
-
+    
    EventModel.findOne( { location: req.query.location} )
 
     .then ((oneEvent) => {
+        console.log("paso por aqui", oneEvent._id)
 
         res.redirect(`/${oneEvent._id}/details`)
     })
