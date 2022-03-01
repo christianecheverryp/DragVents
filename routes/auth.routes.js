@@ -12,7 +12,7 @@ router.get("/signup",  (req, res, next) => {
     res.render("auth/signup.hbs")
 })
 
-router.post("/signup", fileUploader.single("imgProfile"), async (req, res, next) => {
+router.post("/signup", async (req, res, next) => {
 const { name, email, password, role, description, imgProfile } = req.body // todo. Tenemos la duda del role, en algun momento se utilizara, pero no sabemos cuando
 // Revisar que todos los campos esten llenos
 if (!name || !email || !password || !role) {
@@ -56,7 +56,7 @@ const newUser = await UserModel.create({
     password: hashPassword,
     role,
     description,
-    imgProfile : req.file.path
+    imgProfile
 })
 console.log("pasoooo", newUser)
 

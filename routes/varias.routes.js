@@ -23,8 +23,9 @@ router.get("/:id/details", (req, res, next) => {
 
     EventModel.findById(id)
     .populate("creadoPor")
+    .populate("joinUsers")
     .then((oneEvent) => {
-        //console.log("pasamos por aqui", oneEvent)
+        console.log("pasamos por aqui", oneEvent)
         //let isOwner;
         //if (req.session.user) {
         //    isOwner = (req.session.user._id == oneEvent.creadoPor._id)

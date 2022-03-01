@@ -9,6 +9,7 @@
         <p>Creado Por: {{this.name}}</p>
         {{/each}} --}}
         <p>{{oneEvent.creadoPor.name}}</p>
+        {{!-- <p>{{oneEvent.joinUsers.name}}</p> --}}
 
 
 
@@ -21,6 +22,12 @@
 
         <a href="/{{oneEvent._id}}/edit">Edit</a>
 
+        {{/if}}
+
+        {{#if userLocal}}
+        <form id="botonDrag" action="/{{oneEvent._id}}/unirme" method="POST">
+            <button>Unirme</button>
+        </form>
         {{/if}}
 
     </div>
