@@ -2,6 +2,9 @@ const router = require("express").Router();
 const UserModel = require("../models/User.model");
 const bcrypt = require("bcryptjs")
 
+
+const fileUploader = require("../middlewares/uploader")
+
 /* SIGN UP */
 
 
@@ -9,7 +12,7 @@ router.get("/signup",  (req, res, next) => {
     res.render("auth/signup.hbs")
 })
 
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", fileUploader.single("imgProfile"), async (req, res, next) => {
 const { name, email, password, role, description, imgProfile } = req.body // todo. Tenemos la duda del role, en algun momento se utilizara, pero no sabemos cuando
 // Revisar que todos los campos esten llenos
 if (!name || !email || !password || !role) {
@@ -53,7 +56,7 @@ const newUser = await UserModel.create({
     password: hashPassword,
     role,
     description,
-    imgProfile
+    imgProfile : req.file.path
 })
 console.log("pasoooo", newUser)
 
@@ -63,8 +66,10 @@ req.session.user = newUser;
 req.app.locals.isLoggedIn = true 
 
 if (newUser.role === "admin") {
-    req.app.locals.adminLocal = true 
-} 
+    req.app.locals.adminLocal = true; 
+} else if (newUser.role === "user") {
+    req.app.locals.userLocal = true
+}
 
 res.redirect("/events")
 
@@ -123,6 +128,8 @@ router.post("/login", async (req, res, next) => {
         if (req.session.user.role === "admin") {
             req.app.locals.adminLocal = true 
             //console.log("ok")
+        } else if (req.session.user.role === "user") {
+            req.app.locals.userLocal = true
         }
 
 
@@ -151,6 +158,7 @@ router.get ("/logout", (req, res, next) => {
     res.redirect("/")
     req.app.locals.isLoggedIn = false
     req.app.locals.adminLocal = false 
+    req.app.locals.userLocal = false
 })
 
 

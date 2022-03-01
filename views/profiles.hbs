@@ -1,0 +1,32 @@
+<h1>LOS PROFILES</h1>
+
+
+
+<div class="container">
+  {{#each allUsers}}
+  <div class="card">
+    <div class="card-header">
+      <img src="{{this.imgProfile}}" alt="rover" />
+    </div>
+    <div class="card-body">
+      {{!-- <span class="tag tag-teal">Technology</span> --}}
+      <h2>
+        {{this.name}}
+      </h2>
+      {{!-- <p>
+        {{this.description}}
+      </p>
+   --}}
+      <a href="/{{this._id}}/profile-details"><span class="tag tag-purple">DETAILS</span></a>
+
+
+{{!-- {{#if isUser}}
+        <form id="botondelete" action="/{{isUser._id}}/profile-delete" method="POST">
+            <button>Delete</button>
+        </form>
+{{/if}} --}}
+
+    </div>
+  </div>
+  {{/each}}
+</div>

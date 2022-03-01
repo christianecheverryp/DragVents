@@ -1,0 +1,42 @@
+<section>
+    <h1>{{oneUser.name}}</h1>
+    <div class="content">
+        <p>{{oneUser.description}}</p>
+       
+     
+        {{!-- <p>{{oneEvent.creadoPor.name}}</p> --}}
+
+
+
+        {{!-- {{#if isOwner}}
+
+        <form id="botondelete" action="/{{oneEvent._id}}/delete" method="POST">
+            <button>Delete</button>
+        </form>
+
+        <a href="/{{oneEvent._id}}/edit">Edit</a>
+
+        {{/if}} --}}
+
+
+{{#if isUser}}
+        <form id="botondelete" action="/{{oneUser._id}}/profile-delete" method="POST">
+            <button>Delete</button>
+        </form>
+{{/if}}
+
+
+    </div>
+    <div class="img">
+        <img src={{oneUser.imgProfile}}>
+        <span style="display:inline-block;padding:2px 3px;">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;"
+                viewBox="0 0 32 32">
+            
+            </svg>
+        </span>
+
+        </a>
+    </div>
+</section>
