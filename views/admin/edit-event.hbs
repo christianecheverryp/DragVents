@@ -2,7 +2,7 @@
 
 <div id="form">
   <h2>Editar Evento</h2>
-  <form action="/{{oneEvent._id}}/edit" method="POST">
+  <form action="/{{oneEvent._id}}/edit" method="POST" enctype="multipart/form-data">
  
     <label for="title"> Titulo
       <input type="text" name="title" value="{{oneEvent.title}}" />
@@ -22,6 +22,10 @@
 
     <label for="description"> Description
       <input type="text" name="description" value="{{oneEvent.description}}" />
+    </label>
+
+      <label for="img"> Imagen 
+      <input type="file" name="img">
     </label>
 
 

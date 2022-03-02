@@ -63,11 +63,11 @@ router.get ("/:id/edit", isAdmin, async (req,res,next) => {
     }
 })
 
-router.post ("/:id/edit", (req, res, next) => {
+router.post ("/:id/edit", fileUploader.single("img"), (req, res, next) => {
     const {id} =req.params
     const {title, description, location, date, time, img} = req.body
 
-    EventModel.findByIdAndUpdate(id, {title, description, location, date, time, img })
+    EventModel.findByIdAndUpdate(id, {title, description, location, date, time, img:req.file.path })
     .then ((updatedEvent) => {
 
         res.redirect(`/${updatedEvent._id}/details`)
