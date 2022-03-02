@@ -13,7 +13,7 @@ router.get("/create", isAdmin, (req, res, next) => {
 })
 
 router.post("/create", fileUploader.single("img"), (req, res, next) => {
-    let { title, location, date, time, description, img, creadoPor } = req.body
+    let { title, location, date, time, description, img, creadoPor, redesEvent } = req.body
     location = location.toUpperCase()
 
     EventModel.create({
@@ -22,6 +22,7 @@ router.post("/create", fileUploader.single("img"), (req, res, next) => {
         date,
         time,
         description,
+        redesEvent,
         img: req.file.path,
         creadoPor: req.session.user // aqui sabemos que usuario esta conectado
     })

@@ -29,6 +29,9 @@ const userSchema = new Schema(
     imgProfile: {
       type: String
     },
+    redes: {
+      type: String
+    }
 },
 {
      // this second object adds extra properties: `createdAt` and `updatedAt`

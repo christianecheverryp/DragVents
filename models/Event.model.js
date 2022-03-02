@@ -35,7 +35,10 @@ const eventSchema = new Schema ({
             type: Schema.Types.ObjectId,
             ref: "UserModel"
         }
-    ]
+    ],
+    redesEvent: {
+        type: String
+    }
 
 });
 

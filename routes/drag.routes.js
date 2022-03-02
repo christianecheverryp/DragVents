@@ -30,10 +30,10 @@ router.get("/create-profile", async (req, res, next) => {
 
 router.post("/create-profile", fileUploader.single("imgProfile"),  (req, res, next) => {
 
-    let {name, description} = req.body
+    let {name, description, redes} = req.body
     //console.log("aqui etoy", req.file)
 
-    UserModel.findByIdAndUpdate(req.session.user._id, {name, description, imgProfile: req.file.path})
+    UserModel.findByIdAndUpdate(req.session.user._id, {name, description, redes, imgProfile: req.file.path})
     .then((updateDrag) => {
         //console.log(updateDrag)
         res.redirect("/profiles")

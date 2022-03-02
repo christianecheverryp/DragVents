@@ -43,21 +43,30 @@ router.get("/:id/details", (req, res, next) => {
 
 })
 
+
+router.get ("/search/events", (req,res,next) => {
+    res.render ("search-event.hbs")
+})
+
 router.get ("/search", (req, res, next) => {
 
 
     req.query.location = req.query.location.toUpperCase()
     
-   EventModel.findOne( { location: req.query.location} )
+   EventModel.find( { location: req.query.location} )
 
-    .then ((oneEvent) => {
+    .then ((findEvents) => {
+        console.log(findEvents)
        // console.log("paso por aqui", oneEvent._id)
 
-        res.redirect(`/${oneEvent._id}/details`)
+        res.render("search-event.hbs", {findEvents})
+     
     })
     .catch((err) => {
         next(err)
     })
+
+
 
 })
 
