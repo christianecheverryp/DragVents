@@ -26,6 +26,7 @@ router.get("/:id/details", (req, res, next) => {
     .populate("joinUsers")
     .then((oneEvent) => {
         console.log("pasamos por aqui", oneEvent)
+        console.log(" aqui vemos que trae", oneEvent.joinUsers)
         //let isOwner;
         //if (req.session.user) {
         //    isOwner = (req.session.user._id == oneEvent.creadoPor._id)
@@ -63,10 +64,11 @@ router.get ("/search", (req, res, next) => {
 
 router.get ("/profiles",  (req, res, next) => {
 
+    
  
 
-    UserModel.find()
-    .then((allUsers) => {
+    UserModel.find({role: "user"})
+    .then((onlyDrags) => {
         //console.log(allUsers, "BUENAS BUENAAAAS")
         //console.log(allUsers.name)
 
@@ -91,7 +93,7 @@ router.get ("/profiles",  (req, res, next) => {
 
     
 
-        res.render("profiles.hbs", {allUsers})
+        res.render("profiles.hbs", {onlyDrags})
     })
     .catch((err) => {
         next(err)

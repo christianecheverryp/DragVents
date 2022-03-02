@@ -9,7 +9,10 @@
         <p>Creado Por: {{this.name}}</p>
         {{/each}} --}}
         <p>{{oneEvent.creadoPor.name}}</p>
-        {{!-- <p>{{oneEvent.joinUsers.name}}</p> --}}
+
+        {{#each oneEvent.joinUsers}}
+        <p>{{this.name}}</p> 
+        {{/each}}
 
 
 
