@@ -1,6 +1,3 @@
-<h1>EVENTOS</h1>
-
-
 
 {{!-- {{#each allEvents}}
 <a href="/{{this._id}}/details">
@@ -18,9 +15,7 @@
       </div>
     </div>
 </a>
-
 {{/each}} --}}
-
 {{!-- <ul class="cards">
   {{#each allEvents}}
   <li class="cards__item">
@@ -36,23 +31,15 @@
     </div>
   </li>
   {{/each}}
-
 </ul>
 --}}
-
-
-
-
-
-
-
-<div class="container">
+<div class="container-eventos">
   {{#each allEvents}}
-  <div class="card">
-    <div class="card-header">
+  <div class="card-eventos">
+    <div class="card-header-eventos">
       <img src="{{this.img}}" alt="rover" />
     </div>
-    <div class="card-body">
+    <div class="card-body-eventos">
       {{!-- <span class="tag tag-teal">Technology</span> --}}
       <h2>
         {{this.title}}

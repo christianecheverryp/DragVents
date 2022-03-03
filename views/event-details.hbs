@@ -1,44 +1,26 @@
-<section>
+{{!-- <section>
     <h1>{{oneEvent.title}}</h1>
-    <div class="content">
+    <div class="content-event-details">
         <p>Sobre el Evento: {{oneEvent.description}}</p>
         <p>Locación: {{oneEvent.location}}</p>
         <p>Fecha: {{oneEvent.date}}</p>
         <p>Hora: {{oneEvent.time}}</p>
-        {{!-- {{#each oneEvent.creadoPor}}
-        <p>Creado Por: {{this.name}}</p>
-        {{/each}} --}}
-
-    
-
         <p>Organizado por: {{oneEvent.creadoPor.name}}</p>
-
-  
-        
         {{#each oneEvent.joinUsers}}
-        <p>¡{{this.name}} estará participando!</p> 
+        <p>¡{{this.name}} estará participando!</p>
         {{/each}}
-
-    
       <a href="{{oneEvent.redesEvent}}" target="_blank" >LINK A RED SOCIAL DEL EVENTO</a>
-
-        {{!-- {{#if adminLocal._id === oneEvent.creadoPor._id }} --}}
         {{#if isOwner}}
-
-        <form id="botondelete" action="/{{oneEvent._id}}/delete" method="POST">
+        <form id="botondelete-event-details" action="/{{oneEvent._id}}/delete" method="POST">
             <button>Delete</button>
         </form>
-
         <a href="/{{oneEvent._id}}/edit">Edit</a>
-
         {{/if}}
-
         {{#if userLocal}}
         <form id="botonDrag" action="/{{oneEvent._id}}/unirme" method="POST">
             <button>Unirme</button>
         </form>
         {{/if}}
-
     </div>
     <div class="img">
         <img src={{oneEvent.img}}>
@@ -51,7 +33,52 @@
                 </path>
             </svg>
         </span>
-
         </a>
     </div>
 </section>
+ --}}
+    <!--==========================
+=            html            =
+===========================-->
+    <section class="seccion-perfil-usuario">
+        <div class="perfil-usuario-header">
+            <div class="perfil-usuario-portada">
+                <img src={{oneEvent.img}}>
+            </div>
+        </div>
+        <div class="perfil-usuario-body">
+            <div class="perfil-usuario-bio">
+                <h3 class="titulo">{{oneEvent.title}}</h3>
+                <p class="texto">{{oneEvent.description}}</p>
+            </div>
+            <div class="perfil-usuario-footer">
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-map-signs"></i> Direccion: {{oneEvent.location}}</li>
+                    <li><i class="icono fas fa-calendar-alt"></i> Date: {{oneEvent.date}}</li>
+                    <li><i class="icono fas fa-briefcase"></i> Time: {{oneEvent.time}}</li>
+                    <li><i class="icono fas fa-user-check"></i> Creado por: {{oneEvent.creadoPor.name}}</li>
+                </ul>
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-user-check"></i> Estara participando:
+                        {{#each oneEvent.joinUsers}}
+                            {{this.name}},
+                        {{/each}}
+                    </li>
+                </ul>
+           </div>
+            <div class="redes-sociales">
+                <a href="{{oneEvent.redesEvent}}" class="boton-redes instagram fab fa-instagram"><i class="icon-instagram"></i></a>
+                {{#if isOwner}}
+                <form  action="/{{oneEvent._id}}/delete" method="POST">
+                    <input id="boton-delete" type="submit" value="Delete">
+                </form>
+                <a id="boton-edit" href="/{{oneEvent._id}}/edit" >Edit</a>
+                {{/if}}
+                {{#if userLocal}}
+                <form  action="/{{oneEvent._id}}/unirme" method="POST">
+                    <input id="boton-unirme" type="submit" value="Unirme">
+                </form>
+                {{/if}}
+            </div>
+        </div>
+    </section>

@@ -1,22 +1,19 @@
 <div id="body-logIn">
   <form action="/auth/login" method="POST" class="form-logIn">
 
-    {{#if errorMessage}}
-<p style="color:red">{{errorMessage}}</p>
-{{/if}}
 
     <div class="container-logIn">
       <h2>LogIn</h2>
 
       <div class="grupo-logIn">
-        <input id="input-email" type="email" name="email" required /><span
+        <input id="input-email" type="text" name="email"/><span
           class="barra-logIn"
         ></span>
         <label for="">Email</label>
       </div>
 
       <div class="grupo-logIn">
-        <input id="input-password" type="password" name="password" required /><span
+        <input id="input-password" type="password" name="password" /><span
           class="barra-logIn"
         ></span>
         <label for="">Password</label>
@@ -27,7 +24,9 @@
     </div>
 
   </form>
-
+    {{#if errorMessage}}
+<p style="color:red">{{errorMessage}}</p>
+{{/if}}
 
 
 </div>

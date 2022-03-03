@@ -41,7 +41,7 @@ if (req.file) {
         img,
         creadoPor: req.session.user // aqui sabemos que usuario esta conectado
     })
-    //console.log(req.file)
+  
     .then((eachEvent) => {
         res.redirect("/events")
         
@@ -81,24 +81,40 @@ router.get ("/:id/edit", isAdmin, async (req,res,next) => {
 router.post ("/:id/edit", fileUploader.single("img"), (req, res, next) => {
     const {id} =req.params
     let {title, description, location, date, time} = req.body
-let img = "../images/events-img.jpg"
 
-if (title || description || location || date || time) {
-    res.render("admin/edit-event.hbs", {
-        errorMessage: " Ojito, los campos: Título, Locación, Date, Time, Description deben ser completados."
-    })
-    return; 
-}
+    
+    if (!title || !description || !location || !date || !time) {
+        EventModel.findById(id)
+        .then ((oneEvent) => {
+            res.render("admin/edit-event.hbs", {
+                errorMessage: " Ojito, los campos: Título, Locación, Date, Time, Description deben ser completados.", 
+                oneEvent
+            })
+            
+        })
+        .catch ((err)=> {
+            next(err)
+        })
+        return; 
+
+    }
+
+
+let img; 
 
 if (req.file) {
     img = req.file.path
 } 
+
 
     EventModel.findByIdAndUpdate(id, {title, description, location, date, time, img })
     .then ((updatedEvent) => {
 
         res.redirect(`/${updatedEvent._id}/details`)
 
+    })
+    .catch((err) => {
+        next(err)
     })
 })
 

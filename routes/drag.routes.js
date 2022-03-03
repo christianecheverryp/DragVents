@@ -17,7 +17,6 @@ router.get("/create-profile", async (req, res, next) => {
         const {id} = req.params
 
         const oneDrag = await UserModel.findById(req.session.user._id)
-        //console.log("por aqui paso", req.session.user._id)
 
         res.render("drag/create-profile.hbs", {oneDrag})
 
@@ -31,9 +30,8 @@ router.get("/create-profile", async (req, res, next) => {
 router.post("/create-profile", fileUploader.single("imgProfile"),  (req, res, next) => {
 
     let {name, description, redes} = req.body
-    //console.log("aqui etoy", req.file)
 
-    let imgProfile = "../images/nouser-img.png"
+    let imgProfile;
 
     if (req.file) {
         imgProfile = req.file.path
@@ -41,7 +39,13 @@ router.post("/create-profile", fileUploader.single("imgProfile"),  (req, res, ne
 
     UserModel.findByIdAndUpdate(req.session.user._id, {name, description, redes, imgProfile})
     .then((updateDrag) => {
-        //console.log(updateDrag)
+        if (!name) {
+                res.render("drag/create-profile.hbs", {
+                    errorMessage: "Necesitamos aunque sea tu nombre para armar el perfil."
+                })
+                return; 
+            }
+    
         res.redirect("/profiles")
     })
     .catch ((err)=> {
@@ -69,40 +73,17 @@ router.post("/:id/unirme",async (req, res, next) =>{
 
     const {id} = req.params
 
-    //console.log("aqui esta el jon", id)
+
     const elDrag = await EventModel.findById(id)
-    //console.log("aquiiiiiiiiii", elDrag)
-    //const elDrag =  await EventModel.findByIdAndUpdate(id, {joinUsers: req.session.user})
+ 
     await elDrag.updateOne({$addToSet: {joinUsers: req.session.user._id}})
 
 
-    //await elDrag.updateOne({ $cond: { if: {$not: id}, then: {$push: {joinUsers: req.session.user._id}} } })
-    //await elDrag.updateOne({ $cond: { if: {$elemMatch: elDrag.joinUsers}, then: {$push: {joinUsers: req.session.user._id}}   } })
+
     console.log("aquie esta el DRag", elDrag.joinUsers)
 
-//{$cond: {if:{ joinUsers  !includes req.session.user._id}, then:{ await elDrag.updateOne({joinUsers: req.session.user._id}) } }}}
-    
-
-
-
-
-
-
-    //if(req.session.user._id !==)
-    //console.log("que es", {joinUsers: req.session.user._id})
-
-        //update( <query>,{ $push: { <field>: <value> } })
-
-        
-        //console.log("aqui hay algo", elDrag)
-        //cuando cliko push (joinUsers)
-
-        //let dragArr = elDrag.joinUsers.push(req.session.user.name)
+ 
         res.redirect("/events")
-        //console.log("aque el Drag", elDrag) 
-        //console.log("aquie esta el array", elDrag.joinUsers)
-        //console.log("intento", dragArr)
-
 
 
     }

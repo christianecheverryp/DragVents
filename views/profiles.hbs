@@ -1,6 +1,3 @@
-<h1>DRAGS</h1>
-
-
 
 <div class="container">
   {{#each onlyDrags}}
@@ -9,25 +6,14 @@
       <img src="{{this.imgProfile}}" alt="rover" />
     </div>
     <div class="card-body">
-      {{!-- <span class="tag tag-teal">Technology</span> --}}
-      <h2>
+    
+      <h4>
         {{this.name}}
-      </h2>
-      {{!-- <p>
-        {{this.description}}
-      </p>
-   --}}
-
+      </h4>
 
 
       <a href="/{{this._id}}/profile-details"><span class="tag tag-purple">DETAILS</span></a>
 
-
-{{!-- {{#if isUser}}
-        <form id="botondelete" action="/{{isUser._id}}/profile-delete" method="POST">
-            <button>Delete</button>
-        </form>
-{{/if}} --}}
 
     </div>
   </div>

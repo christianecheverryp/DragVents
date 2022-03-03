@@ -25,12 +25,7 @@ router.get("/:id/details", (req, res, next) => {
     .populate("creadoPor")
     .populate("joinUsers")
     .then((oneEvent) => {
-        //console.log("pasamos por aqui", oneEvent)
-        //console.log(" aqui vemos que trae", oneEvent.joinUsers)
-        //let isOwner;
-        //if (req.session.user) {
-        //    isOwner = (req.session.user._id == oneEvent.creadoPor._id)
-        //}
+        
         const isOwner = (req.session.user?._id == oneEvent.creadoPor._id)
         // OPTIONAL CHAINING OPERATOR. super avanzado.
         
@@ -57,7 +52,7 @@ router.get ("/search", (req, res, next) => {
 
     .then ((findEvents) => {
         console.log(findEvents)
-       // console.log("paso por aqui", oneEvent._id)
+      
 
         res.render("search-event.hbs", {findEvents})
      
@@ -78,29 +73,7 @@ router.get ("/profiles",  (req, res, next) => {
 
     UserModel.find({role: "user"})
     .then((onlyDrags) => {
-        //console.log(allUsers, "BUENAS BUENAAAAS")
-        //console.log(allUsers.name)
-
-        //  let isUser;
-        // if(req.session.user) {
-        //     isUser = req.session.user._id ===
-        // }
-        // allUsers.forEach((user) => {
-
-        // isUser = (req.session.user?._id == user._id)
-        //console.log("BUENAAAS", allUsers)
-        // let mostrarDrag;
-        // allUsers.forEach ((drag) => {
-        //    if(drag.role == "user"){
-        //        mostrarDrag = drag
-        //        console.log("muestro los users", mostrarDrag)
-        //    }
-        //     console.log("aqui muestro")
-        // })
-    
-
-
-    
+       
 
         res.render("profiles.hbs", {onlyDrags})
     })
@@ -116,13 +89,9 @@ router.get("/:id/profile-details", (req, res, next) => {
     
 
     UserModel.findById(id)
-    //.populate("creadoPor")
+   
     .then((oneUser) => {
-        //console.log("pasamos por aqui", oneEvent)
-        
-        //if (req.session.user) {
-        //    isOwner = (req.session.user._id == oneEvent.creadoPor._id)
-        //}
+   
         const isUser = (req.session.user?._id == oneUser._id)
         // OPTIONAL CHAINING OPERATOR. super avanzado.
         

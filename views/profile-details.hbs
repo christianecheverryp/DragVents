@@ -1,45 +1,23 @@
-<section>
-    <h1>{{oneUser.name}}</h1>
-    <div class="content">
-        <p>{{oneUser.description}}</p>
-
-
-        <a href="{{oneUser.redes}}" target="_blank"  >RED SOCIAL DEL ARTISTA</a>
-       
-     
-        {{!-- <p>{{oneEvent.creadoPor.name}}</p> --}}
-
-
-
-        {{!-- {{#if isOwner}}
-
-        <form id="botondelete" action="/{{oneEvent._id}}/delete" method="POST">
-            <button>Delete</button>
-        </form>
-
-        <a href="/{{oneEvent._id}}/edit">Edit</a>
-
-        {{/if}} --}}
-
-
-{{#if isUser}}
-        <form id="botondelete" action="/{{oneUser._id}}/profile-delete" method="POST">
-            <button>Delete</button>
-        </form>
-{{/if}}
-
-
+<div class="container-profile">
+    <div class="card-profile">
+    <div id="header-profile">
+        <img src={{oneUser.imgProfile}} alt="Foto del perfil">
     </div>
-    <div class="img">
-        <img src={{oneUser.imgProfile}}>
-        <span style="display:inline-block;padding:2px 3px;">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white;"
-                viewBox="0 0 32 32">
-            
-            </svg>
-        </span>
-
-        </a>
-    </div>
-</section>
+        <section id="section-profile">
+            <h2>{{oneUser.name}}</h2>
+            <p>{{oneUser.description}}</p>
+            <ul id="ul-profile">
+                <li>
+                    <a href="{{oneUser.redes}}" class="boton-redes instagram fab fa-instagram" target="_blank"></a>
+                </li>
+            </ul>
+        </section>
+        <footer id="footer-profile">
+            {{#if isUser}}
+                <form id="botondelete" action="/{{oneUser._id}}/profile-delete" method="POST">
+                    <button id="btnDelete">Delete</button>
+                </form>
+            {{/if}}
+        </footer>
+</div>
+</div>
