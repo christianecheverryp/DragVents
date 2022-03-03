@@ -649,7 +649,7 @@ img {
 #ul-profile li a {
   text-emphasis: none; /* QUITAR EL SUBRAYADO OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO */
   color: white;
-  background: #314652;
+  background: #BE93C5;
   width: 40px;
   height: 40px;
   line-height: 40px !important;
@@ -662,7 +662,7 @@ img {
 #footer-profile {
   width: 100%;
   height: 80px;
-  background: #314652;
+  background: linear-gradient(to right, #7BC6CC, #BE93C5); 
   color: white;
   position: relative;
   
