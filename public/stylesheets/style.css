@@ -648,7 +648,7 @@ img {
   cursor: pointer;
 }
 
-/********************** LOG IN*/
+/********************** LOG IN *******************************************/
 .form-logIn h2 {
   text-align: center;
   font-weight: 700px;
@@ -756,7 +756,7 @@ img {
 }
 
 
-/******************** FORMULARIO CREAR EVENTO*************/
+/******************** FORMULARIO CREAR EVENTO             *************/
 .container-form{
   width: 100%;
   max-width: 1100px;
@@ -764,7 +764,7 @@ img {
   display: grid;
   grid-template-columns: repeat(2,1fr);
   grid-gap: 50px;
-  margin-top: 90px;
+  margin-top: 60px;
 }
 .container-form h2{
   margin-bottom: 15px;
@@ -803,17 +803,18 @@ img {
   min-height: 140px;
   max-height: 150px;
 }
-.container-form .btn-enviar{
+.container-form .btn-event{
   padding: 15px;
   font-size: 16px;
   border: none;
   outline: 0px;
-  background: orange;
+  background: #7BC6CC;  
   color: white;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 300ms ease;
+
 }
-.container-form .btn-enviar:hover{
-  background: #e39403;
+.container-form .btn-event:hover{
+  background: linear-gradient(to right, #7BC6CC, #BE93C5); 
 }
