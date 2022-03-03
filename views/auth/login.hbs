@@ -1,6 +1,10 @@
 <div id="body-logIn">
   <form action="/auth/login" method="POST" class="form-logIn">
 
+    {{#if errorMessage}}
+<p style="color:red">{{errorMessage}}</p>
+{{/if}}
+
     <div class="container-logIn">
       <h2>LogIn</h2>
 
@@ -23,5 +27,10 @@
     </div>
 
   </form>
+
+
+
 </div>
+
+
 {{! views/auth/signup.hbs }}

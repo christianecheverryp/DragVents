@@ -33,7 +33,13 @@ router.post("/create-profile", fileUploader.single("imgProfile"),  (req, res, ne
     let {name, description, redes} = req.body
     //console.log("aqui etoy", req.file)
 
-    UserModel.findByIdAndUpdate(req.session.user._id, {name, description, redes, imgProfile: req.file.path})
+    let imgProfile = "../images/nouser-img.png"
+
+    if (req.file) {
+        imgProfile = req.file.path
+    } 
+
+    UserModel.findByIdAndUpdate(req.session.user._id, {name, description, redes, imgProfile})
     .then((updateDrag) => {
         //console.log(updateDrag)
         res.redirect("/profiles")

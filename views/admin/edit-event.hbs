@@ -36,4 +36,8 @@
  
     {{!-- error message will be added here --}}
   </form>
+
+  {{#if errorMessage}}
+<p style="color:red">{{errorMessage}}</p>
+{{/if}}
 </div>

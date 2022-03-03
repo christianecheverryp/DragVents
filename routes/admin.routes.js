@@ -13,8 +13,23 @@ router.get("/create", isAdmin, (req, res, next) => {
 })
 
 router.post("/create", fileUploader.single("img"), (req, res, next) => {
-    let { title, location, date, time, description, img, creadoPor, redesEvent } = req.body
+    let { title, location, date, time, description, creadoPor, redesEvent } = req.body
     location = location.toUpperCase()
+
+    let img = "../images/events-img.jpg"
+
+    if (!title || !description || !location || !date || !time) {
+        res.render("admin/create-event.hbs", {
+            errorMessage: " Ojito, los campos: Título, Locación, Date, Time, Description deben ser completados."
+        })
+        return; 
+    }
+
+if (req.file) {
+    img = req.file.path
+} 
+
+//VALIDACIONES
 
     EventModel.create({
         title,
@@ -23,7 +38,7 @@ router.post("/create", fileUploader.single("img"), (req, res, next) => {
         time,
         description,
         redesEvent,
-        img: req.file.path,
+        img,
         creadoPor: req.session.user // aqui sabemos que usuario esta conectado
     })
     //console.log(req.file)
@@ -65,9 +80,21 @@ router.get ("/:id/edit", isAdmin, async (req,res,next) => {
 
 router.post ("/:id/edit", fileUploader.single("img"), (req, res, next) => {
     const {id} =req.params
-    const {title, description, location, date, time, img} = req.body
+    let {title, description, location, date, time} = req.body
+let img = "../images/events-img.jpg"
 
-    EventModel.findByIdAndUpdate(id, {title, description, location, date, time, img:req.file.path })
+if (title || description || location || date || time) {
+    res.render("admin/edit-event.hbs", {
+        errorMessage: " Ojito, los campos: Título, Locación, Date, Time, Description deben ser completados."
+    })
+    return; 
+}
+
+if (req.file) {
+    img = req.file.path
+} 
+
+    EventModel.findByIdAndUpdate(id, {title, description, location, date, time, img })
     .then ((updatedEvent) => {
 
         res.redirect(`/${updatedEvent._id}/details`)

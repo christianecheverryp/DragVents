@@ -25,8 +25,8 @@ router.get("/:id/details", (req, res, next) => {
     .populate("creadoPor")
     .populate("joinUsers")
     .then((oneEvent) => {
-        console.log("pasamos por aqui", oneEvent)
-        console.log(" aqui vemos que trae", oneEvent.joinUsers)
+        //console.log("pasamos por aqui", oneEvent)
+        //console.log(" aqui vemos que trae", oneEvent.joinUsers)
         //let isOwner;
         //if (req.session.user) {
         //    isOwner = (req.session.user._id == oneEvent.creadoPor._id)

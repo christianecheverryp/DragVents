@@ -23,7 +23,7 @@ if (!name || !email || !password || !role) {
 const passwordRegex = /^(?=.*[A-z])(?=.*[0-9])/
 if(!passwordRegex.test(password)){
     res.render("auth/signup.hbs", {
-        errorMessage: "La contraseña no cumple con los requisitos"
+        errorMessage: "La contraseña no cumple con los requisitos (debe tener letras y numeros)"
     })
     return;
 }
@@ -49,6 +49,8 @@ if(!emailRegex.test(email)){
 const salt = await bcrypt.genSalt(10);
 const hashPassword = await bcrypt.hash(password, salt);
 
+
+let imgProfile = "../images/nouser-img.png"
 //Creando usuario
 const newUser = await UserModel.create({
     name, 
@@ -65,11 +67,17 @@ req.session.user = newUser;
 //VARIABLES LOCALES
 req.app.locals.isLoggedIn = true 
 
+
 if (newUser.role === "admin") {
     req.app.locals.adminLocal = true; 
 } else if (newUser.role === "user") {
-    req.app.locals.userLocal = true
+    req.app.locals.userLocal = true;
+    if (req.file) {
+        imgProfile = req.file.path
+    } 
 }
+
+
 
 res.redirect("/events")
 
@@ -95,8 +103,9 @@ router.post("/login", async (req, res, next) => {
     if (!email || !password) {
         res.render("auth/login.hbs", {
             errorMessage: "Debes llenar todo los campos."
+            
         })
-        return; 
+        return;  //esto no sale
     }
 
     try {
@@ -104,7 +113,7 @@ router.post("/login", async (req, res, next) => {
         const foundUser = await UserModel.findOne({ email });
         if (!foundUser) {
             res.render("auth/login.hbs", {
-                errorMessage: "Ese usuario no existe."
+                errorMessage: "Ese usuario no existe." //esto no sale
             })
             return; 
         }
@@ -115,6 +124,8 @@ router.post("/login", async (req, res, next) => {
             res.render("auth/login.hbs", {
                 errorMessage: "Contraseña incorrecta"
             })
+        return;
+        
         }
 
         //USUARIO CHECKED 
