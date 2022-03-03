@@ -2,17 +2,20 @@
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
-  background: #BE93C5;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #7BC6CC, #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
-
-
+  background: #BE93C5;  
+  background: -webkit-linear-gradient(to right, #7BC6CC, #BE93C5); 
+  background: linear-gradient(to right, #7BC6CC, #BE93C5); 
 }
 
-a {
+*, 
+::after, 
+::before {
+box-sizing: border-box;
+}
+
+/* a {
   color: #00b7ff;
-}
+} */
 
 h1 {
   color: 15px;
@@ -167,22 +170,103 @@ img {
 
 
 /***************************************************************** INICIO VIDEO*/
-#video {
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
 
-  position: fixed;    
+
+/*   .video-container {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .video-container__cortinilla {
+    height: 50vh;
+    position: absolute;
+    width: 100%;
+    top: 0;
+  }
+ */
+.video-container{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%); 
-      
-  z-index: -100;
-    
-  background-size: cover;
 
+  transform: translateX(-50%) translateY(-50%); 
+
+  
+  z-index: -100;
 }
+
+
+
+#historia-index{
+  background-color: #4d4d4d;
+  position: absolute;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 30px;
+  color: black;
+
+  width: 400px;       
+  height: 400px;
+
+  top:50%;
+  left: 50%;           
+  transform: translateX(-50%) translateY(-50%); 
+
+  opacity: 0.9;
+ 
+  
+}
+
+  .link-index {
+  position:absolute;
+  left: 50%;           
+  transform: translateX(-50%) translateY(-50%); 
+  bottom: 11em; 
+  background-color:#191919;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:Helvetica,Sans-serif;
+}  
+
+a {
+  text-decoration:none;
+  color:#FFF;
+}
+.rainbow-button {
+  width:calc(20vw + 6px);
+  height:calc(4vw + 6px);
+  background-image: linear-gradient(80deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+  border-radius:5px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-transform:uppercase;
+  font-size:1.5vw;
+  font-weight:bold;
+}
+.rainbow-button:after {
+  content:attr(alt);
+  width:20vw;
+  height:4vw;
+  background-color:#191919;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.rainbow-button:hover {
+  animation:slidebg 2s linear infinite;
+}
+
+@keyframes slidebg {
+  to {
+    background-position:20vw;
+  }
+}
+
 /***************************************************************** FIN VIDEO*/
 
 /* /***************************************************************** INICIO NAV*/
@@ -271,7 +355,7 @@ li a:hover {
 html {
   font-family: Montserrat, sans-serif;
   font-size: 15px;
-  background-color: #f5f5f5;
+  
 }
 body {
   padding: 1em;
@@ -432,22 +516,14 @@ img {
   color: #545d7a;
 }
 
-/*¿*********** FORMULARIO SIGN IN *****************/
+/************************************************** FORMULARIO SIGN IN *****************/
 
 
 :root {
   --colorTextos: #49454567;
 }
 
-*,
-::before,
-::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#form_signIn {
+#form_signIn, #body-logIn {
   height: 650px;
   display: flex;
   justify-content: center;
@@ -455,9 +531,10 @@ img {
 
 }
 
-h1 {
+.form h2 {
   text-align: center;
   font-weight: 700px;
+  color: var(--colorTextos);
 }
 
 #form_contenedor{
@@ -475,10 +552,18 @@ h1 {
 
 #form_contenedor .grupo{
   position: relative;
-  margin: 45px;
+  margin: 40px;
 }
 
-#name_Input, #email_Input, #password_Input {
+#form_contenedor .grupo-radio {
+  position: relative;
+  margin: 20px 45px;
+  color: var(--colorTextos);
+}
+
+#name_Input, 
+#email_Input, 
+#password_Input {
   background: none;
   color: #c6c6c6;
   font-size: 18px;
@@ -505,12 +590,20 @@ h1 {
 }
 
 /* subo el nombre cuando pincho en el input */
-#name_Input:focus~.label_signIn, #email_Input:focus~.label_signIn, #password_Input:focus~.label_signIn 
+#name_Input:focus~.label_signIn,
+#email_Input:focus~.label_signIn,
+#password_Input:focus~.label_signIn,
+#name_Input:valid~.label_signIn,
+#email_Input:valid~.label_signIn,
+#password_Input:valid~.label_signIn
 /* #name_Input:valid~.label_signIn, #email_Input:valid~.label_signIn, #password_Input:valid~.label_signIn */ {
   top: -14px;
   font-size: 12px;
   color: #2196f3;
 }
+
+
+
 .barra {
   position: relative;
   display: block;
@@ -531,9 +624,14 @@ h1 {
 
 #password_Input:focus~.barra::before {
   width: 100%;
-
-
 }
+#name_Input:focus~.barra::before {
+  width: 100%;
+}
+#email_Input:focus~.barra::before {
+  width: 100%;
+}
+
 
 #btn-createAccount {
   font-family: 'roboto';
@@ -550,3 +648,172 @@ h1 {
   cursor: pointer;
 }
 
+/********************** LOG IN*/
+.form-logIn h2 {
+  text-align: center;
+  font-weight: 700px;
+  color: var(--colorTextos);
+
+}
+
+.form-logIn {
+  background-color: white;
+  padding: 40px 0;
+  box-shadow: 0 0 6px 0 rgb(255, 255, 255, 0.8);
+  border-radius: 6px;
+  
+}
+
+.container-logIn {
+  width: 100%;
+  margin: auto;
+}
+
+.form-logIn .grupo-logIn {
+  position: relative;
+  margin: 45px;
+}
+
+#input-email, #input-password{
+  background: none;
+  color: #c6c6c6;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--colorTextos);
+}
+
+#input-password:focus,
+#input-email:focus {
+  outline: none;
+  color: #5e5d5d;
+}
+
+.grupo-logIn label {
+  color: var(--colorTextos);
+  font-size: 16px;
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  transition: 0.5s ease-in-out all;
+  pointer-events: none;
+}
+
+#input-password:focus~label,
+#input-password:valid~label{
+  top: -14px;
+  font-size: 12px;
+  color: #2196f3;
+}
+
+#input-email:focus~label,
+#input-email:valid~label{
+  top: -14px;
+  font-size: 12px;
+  color: #2196f3;
+}
+
+.barra-logIn{
+  position: relative;
+  display: block;
+  width: 100%;
+
+}
+
+.barra-logIn::before{
+  content: "";
+  height: 2px;
+  width: 0%;
+  bottom: 0;
+  position: absolute;
+  background: linear-gradient(to right, #7BC6CC, #BE93C5);
+  transition: 0.3s ease width ;
+  left: 0;
+}
+
+#input-email:focus~.barra-logIn::before{
+  width: 100%;
+}
+#input-password:focus~.barra-logIn::before{
+  width: 100%;
+}
+
+.container-logIn button {
+  font-family: "roboto";
+  background: #BE93C5;  
+  background: -webkit-linear-gradient(to right, #7BC6CC, #BE93C5); 
+  background: linear-gradient(to right, #7BC6CC, #BE93C5); 
+  border: none;
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  color: white;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+/******************** FORMULARIO CREAR EVENTO*************/
+.container-form{
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 50px;
+  margin-top: 90px;
+}
+.container-form h2{
+  margin-bottom: 15px;
+  font-size: 35px
+}
+.container-form p{
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+ .container-form a{
+  font-size: 17px;
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+  margin-bottom: 15px;
+  color: black;
+  font-weight: 700;
+} 
+/* .container-form a i{
+  color: orange;
+  margin-right: 10px;
+} */
+.container-form form .campo, textarea{
+  width: 100%;
+  padding: 15px 10px;
+  font-size: 16px;
+  border: 1px solid #dbdbdb;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  outline: 0px;
+}
+.container-form form textarea{
+  max-width: 530px;
+  min-width: 530px;
+  min-height: 140px;
+  max-height: 150px;
+}
+.container-form .btn-enviar{
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  outline: 0px;
+  background: orange;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+.container-form .btn-enviar:hover{
+  background: #e39403;
+}

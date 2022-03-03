@@ -1,20 +1,27 @@
-<h1>Ventana de Login</h1>
-{{!-- views/auth/signup.hbs --}}
- 
-<div id="form">
-  <h2>Login</h2>
-  <form action="/auth/login" method="POST">
- 
-    <label> Email
-      <input type="email" name="email" placeholder="...email" />
-    </label>
- 
-    <label> Password
-      <input type="password" name="password" placeholder="...password" />
-    </label>
- 
-    <button type="submit">Log In</button>
- 
-    {{!-- error message will be added here --}}
+<div id="body-logIn">
+  <form action="/auth/login" method="POST" class="form-logIn">
+
+    <div class="container-logIn">
+      <h2>LogIn</h2>
+
+      <div class="grupo-logIn">
+        <input id="input-email" type="email" name="email" required /><span
+          class="barra-logIn"
+        ></span>
+        <label for="">Email</label>
+      </div>
+
+      <div class="grupo-logIn">
+        <input id="input-password" type="password" name="password" required /><span
+          class="barra-logIn"
+        ></span>
+        <label for="">Password</label>
+      </div>
+
+      <button type="submit">Log In</button>
+
+    </div>
+
   </form>
 </div>
+{{! views/auth/signup.hbs }}
