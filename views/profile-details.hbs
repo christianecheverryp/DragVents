@@ -13,15 +13,11 @@
             </ul>
         </section>
         <footer id="footer-profile">
-            {{!-- {{#if isUser}}
-                <form id="botondelete" action="/{{oneUser._id}}/profile-delete" method="POST">
-                    <button id="btnDelete">Delete</button>
-                </form>
-            {{/if}} --}}
+         
         </footer>
         {{#if isUser}}
         <form  action="/{{oneUser._id}}/profile-delete" method="POST">
-                    {{!-- <input id="boton-delete" type="submit" value="Delete"> --}}
+                  
                     <button id="boton-delete" type="submit">Eliminar Cuenta</button>
                 </form>
          {{/if}}

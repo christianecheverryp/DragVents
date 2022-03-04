@@ -6,9 +6,6 @@ const fileUploader = require("../middlewares/uploader");
 const async = require("hbs/lib/async");
 
 
-router.get("/profiles", (req, res, next) => {
-    res.render("drag/profiles.hbs")
-})
 
 router.get("/create-profile", async (req, res, next) => {
 
@@ -80,7 +77,7 @@ router.post("/:id/unirme",async (req, res, next) =>{
 
 
 
-    console.log("aquie esta el DRag", elDrag.joinUsers)
+
 
  
         res.redirect("/events")
