@@ -67,7 +67,7 @@
                 </ul>
            </div>
             <div class="redes-sociales">
-                <a href="{{oneEvent.redesEvent}}" class="boton-redes instagram fab fa-instagram"><i class="icon-instagram"></i></a>
+                <a href="{{oneEvent.redesEvent}}" class="boton-redes instagram fab fa-instagram" target="_blank"><i class="icon-instagram"></i></a>
                 {{#if isOwner}}
                 <form  action="/{{oneEvent._id}}/delete" method="POST">
                     <input id="boton-delete" type="submit" value="Delete">

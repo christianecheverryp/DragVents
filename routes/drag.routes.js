@@ -59,7 +59,7 @@ router.post("/:id/profile-delete", async (req, res, next) => {
         const {id} = req.params
 
         await UserModel.findByIdAndDelete(id)
-        res.redirect("/profiles")
+        res.redirect("/auth/logout")
 
     }
     catch(err){

@@ -80,7 +80,7 @@ router.get ("/:id/edit", isAdmin, async (req,res,next) => {
 
 router.post ("/:id/edit", fileUploader.single("img"), (req, res, next) => {
     const {id} =req.params
-    let {title, description, location, date, time} = req.body
+    let {title, description, location, date, time, redesEvent} = req.body
 
     
     if (!title || !description || !location || !date || !time) {
@@ -107,7 +107,7 @@ if (req.file) {
 } 
 
 
-    EventModel.findByIdAndUpdate(id, {title, description, location, date, time, img })
+    EventModel.findByIdAndUpdate(id, {title, description, location, date, time, img, redesEvent })
     .then ((updatedEvent) => {
 
         res.redirect(`/${updatedEvent._id}/details`)

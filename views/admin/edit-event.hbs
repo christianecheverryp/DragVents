@@ -30,9 +30,7 @@
 <div class="container-form">
   <div class="event-form">
     <h2>Editar Evento</h2>
-    <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno
-      estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta)
-      desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. </p>
+    <p></p>
  {{!--    <a href="#"> <i class="fa fa-phone"></i>88787878 </a>
     <a href="#"><i class="fa fa-envelope"></i>email@email.com</a>
     <a href="#"><i class="fa fa-map-marked"></i>Cudad, Pais</a> --}}
@@ -43,6 +41,7 @@
     <input class="campo" type="date" name="date" value="{{oneEvent.date}}" min="2022-01-01" max="2030-12-31">
     <input class="campo" min="06:00" max="00:00" type="time" name="time" value="{{oneEvent.time}}"/>
     <textarea class="campo"  cols="30" rows="10" type="text" name="description" value="{{oneEvent.description}}"></textarea>
+    <input class="campo" type="text" name="redesEvent" placeholder="...link a tu red social" value="{{oneEvent.redesEvent}}"/>
     <input class="campo" type="file" name="img">
     <button class="btn-event" type="submit">Editar Evento</button>
   </form>
